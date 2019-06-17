@@ -3,9 +3,6 @@ const https = require('https');
 const ytdl = require('ytdl-core');
 require('dotenv').config();
 
-// Import iamges
-const images = require('./images.js');
-
 const client = new Discord.Client();
 
 // Inicializacja i ustawanie statusu
@@ -23,10 +20,12 @@ client.on("ready", () => {
 client.on("message", msg => {
   // !pomoc, !komendy, !help
   if (msg.content === "!pomoc" || msg.content === "!komendy" || msg.content === "!help") {
+    const attachment = new Discord.Attachment('./img/avatar.png', 'avatar.png');
     const pomoc = new Discord.RichEmbed()
       .setColor('#36e272')
       .setTitle('Lista komend:')
-      .setThumbnail(images.avatarImg)
+      .attachFile(attachment)
+      .setThumbnail('attachment://avatar.png')
       .addField('!jd', 'wiadomo ocb')
       .addField('!zadymka', 'robi zadymke a niby co innego')
       .addField('!legia', 'to chuje a lech mistrz polski!')
@@ -34,7 +33,7 @@ client.on("message", msg => {
       .addField('!leesin', 'xayoo obraża ślepego mnicha ***szok***')
       .addField('!wypierdalaj', 'xayoo grzecznie prosi abyś wyszedł z kanału')
       .setTimestamp()
-      .setFooter('ZadymkaBot - Danieleqq', images.avatarImg);
+      .setFooter('ZadymkaBot - Danieleqq', 'attachment://avatar.png');
 
     msg.channel.send(pomoc);
   }
