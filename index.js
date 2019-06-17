@@ -53,7 +53,7 @@ client.on("message", msg => {
       msg.member.voiceChannel.join()
         .then((connection) => {
           console.log("connected..")
-          const dispatcher = connection.playStream(ytdl("https://www.youtube.com/watch?v=G30CelGaSGA", { filter: "audioonly", highWaterMark: 1 << 25 }), { highWaterMark: 1 });
+          const dispatcher = connection.playStream(ytdl("https://www.youtube.com/watch?v=G30CelGaSGA"));
           console.log("playing...")
           dispatcher.on('end', () => {
             console.log("END, disconecting...")
