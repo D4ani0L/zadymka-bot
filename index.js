@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const https = require('https');
 const ytdl = require('ytdl-core');
+require('dotenv').config();
 
 const images = require('./images.js');
 
@@ -94,4 +95,4 @@ client.on("message", msg => {
   }
 });
 
-client.login("NTcxNjcyNDY1NjIxNjQ3Mzgw.XMRZlA.FV5SHH5tbwbKmC812A6uEE22Wwk");
+client.login(process.env.DISCORD_TOKEN);
