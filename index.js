@@ -62,6 +62,27 @@ client.on("message", msg => {
         });
     }
   }
+  // !test ---------------------------------------------------------------------------------
+  else if (msg.content === "!test") {
+    let randBool = Math.random() >= 0.5;
+    if (randBool) msg.channel.send("siu siu siu!")
+    else msg.channel.send("fiu fiu fiu!")
+
+    // Playing audio
+    if (msg.member.voiceChannel) {
+      msg.member.voiceChannel.join()
+        .then((connection) => {
+          console.log("connected..")
+          const dispatcher = connection.playStream(ytdl("https://www.youtube.com/watch?v=GTksNd5dqlI", { filter: "audioonly" }));
+          console.log("playing...")
+          dispatcher.on('end', () => {
+            console.log("END, disconecting...")
+            connection.disconnect();
+          });
+        });
+    }
+  }
+  // !test ---------------------------------------------------------------------------------
   // !wypierdalaj
   else if (msg.content === "!wypierdalaj") {
     msg.channel.send("Wypierdalaj kurwa!")
