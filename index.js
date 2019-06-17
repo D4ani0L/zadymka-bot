@@ -63,10 +63,8 @@ client.on("message", msg => {
     }
   }
   // !legia 
-  else if (msg.content === "!test") {
-    let randBool = Math.random() >= 0.5;
-    if (randBool) msg.channel.send("siu siu siu!")
-    else msg.channel.send("fiu fiu fiu!")
+  else if (msg.content === "!legia") {
+    msg.channel.send("to chuje a lech mistrz polski!")
 
     // Playing audio
     if (msg.member.voiceChannel) {
