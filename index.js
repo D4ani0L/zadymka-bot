@@ -3,6 +3,7 @@ const https = require('https');
 const ytdl = require('ytdl-core');
 require('dotenv').config();
 
+// Import iamges
 const images = require('./images.js');
 
 const client = new Discord.Client();
