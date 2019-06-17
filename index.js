@@ -37,23 +37,23 @@ client.on("message", msg => {
 
     msg.channel.send(pomoc);
   }
-  // !jd
+  // !jd 
   else if (msg.content === "!jd") {
     const emoteBT = client.emojis.find(emoji => emoji.name === "BloodTrail");
     msg.reply(`PROSTE ŻE TAK ${emoteBT}`);
   }
-  // !zadymka
+  // !zadymka 
   else if (msg.content === "!zadymka") {
     let randBool = Math.random() >= 0.5;
     if (randBool) msg.channel.send("siu siu siu!")
     else msg.channel.send("fiu fiu fiu!")
 
-    // Playing audio
+    // Playing audio 
     if (msg.member.voiceChannel) {
       msg.member.voiceChannel.join()
         .then((connection) => {
           console.log("connected..")
-          const dispatcher = connection.playStream(ytdl("https://www.youtube.com/watch?v=G30CelGaSGA"));
+          const dispatcher = connection.playStream(ytdl("https://www.youtube.com/watch?v=G30CelGaSGA", { filter: "audioonly" }));
           console.log("playing...")
           dispatcher.on('end', () => {
             console.log("END, disconecting...")
@@ -62,7 +62,7 @@ client.on("message", msg => {
         });
     }
   }
-  // !test ---------------------------------------------------------------------------------
+  // !legia 
   else if (msg.content === "!test") {
     let randBool = Math.random() >= 0.5;
     if (randBool) msg.channel.send("siu siu siu!")
@@ -73,7 +73,7 @@ client.on("message", msg => {
       msg.member.voiceChannel.join()
         .then((connection) => {
           console.log("connected..")
-          const dispatcher = connection.playStream(ytdl("https://www.youtube.com/watch?v=GTksNd5dqlI", { filter: "audioonly" }));
+          const dispatcher = connection.playStream(ytdl("https://www.youtube.com/watch?v=sV1DlnxbSYI", { filter: "audioonly" }));
           console.log("playing...")
           dispatcher.on('end', () => {
             console.log("END, disconecting...")
@@ -82,7 +82,6 @@ client.on("message", msg => {
         });
     }
   }
-  // !test ---------------------------------------------------------------------------------
   // !wypierdalaj
   else if (msg.content === "!wypierdalaj") {
     msg.channel.send("Wypierdalaj kurwa!")
