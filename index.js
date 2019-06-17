@@ -13,7 +13,7 @@ client.on("ready", () => {
   console.log(`Bot ${client.user.tag} is now online!`);
   client.user.setPresence({
     game: {
-      name: 'twoją głupotę | !pomoc',
+      name: 'jak marnujesz życie | !pomoc',
       type: "WATCHING" //Ogląda...
     }
   });
@@ -29,6 +29,7 @@ client.on("message", msg => {
       .setThumbnail(images.avatarImg)
       .addField('!jd', 'wiadomo ocb')
       .addField('!zadymka', 'robi zadymke a niby co innego')
+      .addField('!legia', 'to chuje a lech mistrz polski!')
       .addField('!outlast', 'dowód kiedy outlast')
       .addField('!leesin', 'xayoo obraża ślepego mnicha ***szok***')
       .addField('!wypierdalaj', 'xayoo grzecznie prosi abyś wyszedł z kanału')
