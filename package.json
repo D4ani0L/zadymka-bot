@@ -1,14 +1,17 @@
 {
-  "name": "discord-bot",
+  "name": "zadymka-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "ZadymkaBot for Discord",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "bot",
+    "zadymka"
+  ],
+  "author": "Daniel Skowron",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.4.2",
