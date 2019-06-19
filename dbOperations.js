@@ -1,11 +1,14 @@
-const fs = require('fs');
-const logger = fs.createWriteStream('logs.txt', { flags: 'a' });
-
-// User model
+// Models
 const User = require('./models/User');
+const Log = require('./models/Log');
 
 const checkForNewUsers = client => {
-    logger.write(new Date() + ': ' + 'Checking for new users...');
+    // Create new Log
+    let newLog = new Log({
+        date: new Date(),
+        text: 'Checking for new users...'
+    });
+    newLog.save().catch(err => console.log(err));
     client.guilds
         .find(x => x.name === 'Z S Ł Ł')
         .members.forEach(member => {
@@ -21,7 +24,12 @@ const checkForNewUsers = client => {
                     newUser
                         .save()
                         .then(newUser => {
-                            logger.write(new Date() + ': ' + `User ${newUser.name} added...`);
+                            // Create new Log
+                            let newLog = new Log({
+                                date: new Date(),
+                                text: `User ${newUser.name} added...`
+                            });
+                            newLog.save().catch(err => console.log(err));
                         })
                         .catch(err => console.log(err));
                 }
@@ -35,7 +43,12 @@ const increaseMessagesCount = msg => {
         User.findOneAndUpdate({ name: msg.member.displayName }, { messages: user.messages + 1 })
             .then(updatedUser => {
                 if (updatedUser.name === 'ZadymkaBot 🔥') return;
-                logger.write(new Date() + ': ' + `User ${updatedUser.name} send message (db record edited)...`);
+                // Create new Log
+                let newLog = new Log({
+                    date: new Date(),
+                    text: `User ${updatedUser.name} send message (db record edited)...`
+                });
+                newLog.save().catch(err => console.log(err));
             })
             .catch(err => console.log(err));
     });
@@ -43,7 +56,12 @@ const increaseMessagesCount = msg => {
 
 const addNewUser = member => {
     if (member.user.bot) return;
-    logger.write(new Date() + ': ' + `New user joined: ${member.displayName}, adding to db...`);
+    // Create new Log
+    let newLog = new Log({
+        date: new Date(),
+        text: `New user joined: ${member.displayName}, adding to db...`
+    });
+    newLog.save().catch(err => console.log(err));
     let newUser = new User({
         name: member.displayName,
         joinedAt: member.joinedAt,
@@ -52,7 +70,12 @@ const addNewUser = member => {
     newUser
         .save()
         .then(() => {
-            logger.write(new Date() + ': ' + `User added...`);
+            // Create new Log
+            let newLog = new Log({
+                date: new Date(),
+                text: `User added...`
+            });
+            newLog.save().catch(err => console.log(err));
         })
         .catch(err => console.log(err));
 };
