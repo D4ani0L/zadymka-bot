@@ -7,9 +7,13 @@ const LogSchema = new Schema({
         type: Date,
         required: true
     },
-    text: {
+    type: {
         type: String,
         required: true
+    },
+    message: {
+        type: String,
+        required: false
     }
 });
 

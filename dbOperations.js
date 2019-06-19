@@ -6,7 +6,7 @@ const checkForNewUsers = client => {
     // Create new Log
     let newLog = new Log({
         date: new Date(),
-        text: 'Checking for new users...'
+        type: 'Checking for new users...'
     });
     newLog.save().catch(err => console.log(err));
     client.guilds
@@ -27,7 +27,7 @@ const checkForNewUsers = client => {
                             // Create new Log
                             let newLog = new Log({
                                 date: new Date(),
-                                text: `User ${newUser.name} added...`
+                                type: `User ${newUser.name} added...`
                             });
                             newLog.save().catch(err => console.log(err));
                         })
@@ -46,7 +46,8 @@ const increaseMessagesCount = msg => {
                 // Create new Log
                 let newLog = new Log({
                     date: new Date(),
-                    text: `User ${updatedUser.name} send message (db record edited)...`
+                    type: `User ${updatedUser.name} send message (db record edited)...`,
+                    message: msg.content
                 });
                 newLog.save().catch(err => console.log(err));
             })
@@ -59,7 +60,7 @@ const addNewUser = member => {
     // Create new Log
     let newLog = new Log({
         date: new Date(),
-        text: `New user joined: ${member.displayName}, adding to db...`
+        type: `New user joined: ${member.displayName}, adding to db...`
     });
     newLog.save().catch(err => console.log(err));
     let newUser = new User({
@@ -67,17 +68,7 @@ const addNewUser = member => {
         joinedAt: member.joinedAt,
         messages: 0
     });
-    newUser
-        .save()
-        .then(() => {
-            // Create new Log
-            let newLog = new Log({
-                date: new Date(),
-                text: `User added...`
-            });
-            newLog.save().catch(err => console.log(err));
-        })
-        .catch(err => console.log(err));
+    newUser.save().catch(err => console.log(err));
 };
 
 const getMostActiveUsers = f => {
