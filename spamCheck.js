@@ -1,19 +1,19 @@
 let messages = [];
+const time = 4000;
 
 const checkForSpam = msg => {
     if (!msg.author.bot) {
         messages.push({ author: msg.member.displayName, time: Date.now() });
     }
     let newMessages = messages.filter(item => {
-        return Date.now() - 4000 < item.time;
+        return Date.now() - time < item.time;
     });
     messages = newMessages;
     let check = messages.filter(item => {
         return item.author === msg.member.displayName;
     });
-    console.log('Check: ' + check.length);
     if (check.length > 3) {
-        msg.reply('nie spamuj zadymiarzu!');
+        msg.reply('nie spamuj kolego!');
         return true;
     } else {
         return false;
