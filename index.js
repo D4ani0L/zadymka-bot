@@ -29,12 +29,8 @@ client.once('ready', () => {
 
 // reakcje na komendy
 client.on('message', msg => {
-    if (msg.member.displayName === 'Kardynał Wędzidełko') {
-        msg.reply(`MASZ BANA ZA SPAMOWANIE MAŁY PRZYJACIELU`);
-    } else {
-        increaseMessagesCount(msg);
-        reactToCommands(client, msg);
-    }
+    increaseMessagesCount(msg);
+    reactToCommands(client, msg);
 });
 
 // operacje z bazą danych
