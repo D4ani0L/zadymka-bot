@@ -29,8 +29,12 @@ client.once('ready', () => {
 
 // reakcje na komendy
 client.on('message', msg => {
-    increaseMessagesCount(msg);
-    reactToCommands(client, msg);
+    if (msg.member.displayName === 'Kardynał Wędzidełko') {
+        msg.reply(`NIE SPAMUJ RADEK, DZIĘKI`);
+    } else {
+        increaseMessagesCount(msg);
+        reactToCommands(client, msg);
+    }
 });
 
 // operacje z bazą danych
