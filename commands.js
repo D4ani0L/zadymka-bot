@@ -46,22 +46,6 @@ const reactToCommands = (client, msg) => {
             });
         }
     }
-    // !idzspac
-    else if (msg.content === '!idzspac') {
-        msg.channel.send('idź spać olsza!');
-
-        // Playing audio
-        if (msg.member.voiceChannel) {
-            msg.member.voiceChannel.join().then(connection => {
-                const dispatcher = connection.playStream(
-                    ytdl('https://www.twitch.tv/xayoo_/clip/MoldyJollySnoodCoolStoryBob', { filter: 'audioonly' })
-                );
-                dispatcher.on('end', () => {
-                    connection.disconnect();
-                });
-            });
-        }
-    }
     // Most active users
     else if (msg.content === '!top') {
         getMostActiveUsers(users => {
