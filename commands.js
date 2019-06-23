@@ -17,6 +17,7 @@ const reactToCommands = (client, msg) => {
             .addField('!legia', 'to chuje a lech mistrz polski!')
             .addField('!outlast', 'dowód kiedy outlast')
             .addField('!leesin', 'xayoo obraża ślepego mnicha ***szok***')
+            .addField('!kocham [coś tu wpisz]', 'przewiduje na ile kochasz to coś')
             .addField('!wypierdalaj', 'xayoo grzecznie prosi abyś wyszedł z kanału')
             .setTimestamp()
             .setFooter('ZadymkaBot - Danieleqq', 'attachment://avatar.png');
