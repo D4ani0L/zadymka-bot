@@ -14,6 +14,7 @@ const reactToCommands = (client, msg) => {
             .addField('!jd', 'wiadomo ocb')
             .addField('!top', 'Wyświetla top 5 zadymiarzy!')
             .addField('!zadymka', 'robi zadymke a niby co innego')
+            .addField('!jbl [link do yt]', 'odpala głośnik')
             .addField('!legia', 'to chuje a lech mistrz polski!')
             .addField('!outlast', 'dowód kiedy outlast')
             .addField('!leesin', 'xayoo obraża ślepego mnicha ***szok***')
@@ -112,6 +113,20 @@ const reactToCommands = (client, msg) => {
         let what = msg.content.slice(8);
         const randNumber = Math.floor(Math.random() * 100);
         msg.reply(`kochasz ${what} na ${randNumber}%`);
+    }
+    // !dawaj
+    else if (msg.content.search('!jbl') === 0) {
+        let url = msg.content.slice(5);
+
+        // Playing audio
+        if (msg.member.voiceChannel) {
+            msg.member.voiceChannel.join().then(connection => {
+                const dispatcher = connection.playStream(ytdl(url, { filter: 'audioonly' }));
+                dispatcher.on('end', () => {
+                    connection.disconnect();
+                });
+            });
+        }
     }
 };
 
