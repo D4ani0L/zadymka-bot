@@ -3,8 +3,12 @@ const Discord = require('discord.js');
 const { getMostActiveUsers } = require('./dbOperations');
 
 const reactToCommands = (client, msg) => {
+    // Get args & command
+    const args = msg.content.slice(1).split(/ +/);
+    const command = args.shift().toLowerCase();
+
     // !pomoc, !komendy, !help
-    if (msg.content === '!pomoc' || msg.content === '!komendy' || msg.content === '!help') {
+    if (command === 'pomoc' || command === 'help' || command === 'komendy') {
         const attachment = new Discord.Attachment('./img/avatar.png', 'avatar.png');
         const pomoc = new Discord.RichEmbed()
             .setColor('#36e272')
@@ -26,12 +30,12 @@ const reactToCommands = (client, msg) => {
         msg.channel.send(pomoc);
     }
     // !jd
-    else if (msg.content === '!jd') {
+    else if (command === 'jd') {
         const emoteBT = client.emojis.find(emoji => emoji.name === 'BloodTrail');
         msg.reply(`PROSTE ŻE TAK ${emoteBT}`);
     }
     // !zadymka
-    else if (msg.content === '!zadymka') {
+    else if (command === 'zadymka') {
         let randBool = Math.random() >= 0.5;
         if (randBool) msg.channel.send('siu siu siu!');
         else msg.channel.send('fiu fiu fiu!');
@@ -49,7 +53,7 @@ const reactToCommands = (client, msg) => {
         }
     }
     // Most active users
-    else if (msg.content === '!top') {
+    else if (command === 'top') {
         getMostActiveUsers(users => {
             const attachment = new Discord.Attachment('./img/avatar.png', 'avatar.png');
             const pomoc = new Discord.RichEmbed()
@@ -69,7 +73,7 @@ const reactToCommands = (client, msg) => {
         });
     }
     // !legia
-    else if (msg.content === '!legia') {
+    else if (command === 'legia') {
         msg.channel.send('to chuje a lech mistrz polski!');
 
         // Playing audio
@@ -85,7 +89,7 @@ const reactToCommands = (client, msg) => {
         }
     }
     // !wypierdalaj
-    else if (msg.content === '!wypierdalaj') {
+    else if (command === 'wypierdalaj') {
         msg.channel.send('Wypierdalaj kurwa!');
 
         // Playing audio
@@ -101,22 +105,22 @@ const reactToCommands = (client, msg) => {
         }
     }
     // !outlast
-    else if (msg.content === '!outlast') {
+    else if (command === 'outlast') {
         msg.reply('https://www.twitch.tv/xayoo_/clip/CarefulTolerantFalconPanicVis');
     }
     // !leesin
-    else if (msg.content === '!leesin') {
+    else if (command === 'leesin') {
         msg.reply('https://www.twitch.tv/xayoo_/clip/TentativeCleverWatercressArgieB8');
     }
     // !kocham x
-    else if (msg.content.search('!kocham') === 0) {
-        let what = msg.content.slice(8);
+    else if (command === 'kocham') {
+        let what = args[0];
         const randNumber = Math.floor(Math.random() * 100);
         msg.reply(`kochasz ${what} na ${randNumber}%`);
     }
     // !dawaj
-    else if (msg.content.search('!jbl') === 0) {
-        let url = msg.content.slice(5);
+    else if (command === 'jbl') {
+        let url = args[0];
 
         // Playing audio
         if (msg.member.voiceChannel) {
