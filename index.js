@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const { reactToCommands } = require('./commands');
 const { addNewUser, checkForNewUsers, increaseMessagesCount } = require('./dbOperations');
-//const { checkForSpam } = require('./spamCheck');
+const { checkForSpam } = require('./spamCheck');
 
 // Database
 const db = process.env.DB_URL;
@@ -30,9 +30,9 @@ client.once('ready', () => {
 
 // reakcje na komendy
 client.on('message', msg => {
-    // if (checkForSpam(msg)) {
-    //     return;
-    // }
+    if (checkForSpam(msg)) {
+        return;
+    }
     increaseMessagesCount(msg);
     reactToCommands(client, msg);
 });

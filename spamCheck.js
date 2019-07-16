@@ -13,7 +13,6 @@ const checkForSpam = msg => {
         return item.author === msg.member.displayName;
     });
     if (check.length > 3) {
-        msg.reply('nie spamuj kolego!');
         return true;
     } else {
         return false;
