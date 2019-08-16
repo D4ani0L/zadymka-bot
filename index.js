@@ -21,8 +21,8 @@ client.once('ready', () => {
     console.log(`Bot ${client.user.tag} is ready!`);
     client.user.setPresence({
         game: {
-            name: 'cię jak śpisz ಠ_ಠ | !pomoc',
-            type: 'WATCHING' //Ogląda...
+            name: 'Cyberpunk 2077',
+            type: 'PLAYING' //Ogląda...
         }
     });
     checkForNewUsers(client);
